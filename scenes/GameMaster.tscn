@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Chosen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://graphics/ground_top.png" type="Texture" id=2]
+[ext_resource path="res://scripts/SmiteSpawner.gd" type="Script" id=3]
+[ext_resource path="res://scripts/HaloopSpawner.gd" type="Script" id=4]
+[ext_resource path="res://graphics/clouds.png" type="Texture" id=5]
+
+[sub_resource type="TileSet" id=1]
+0/name = "ground_top.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "clouds.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="GameMaster" type="Node2D"]
+
+[node name="Chosen" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 264 )
+godness = 0.167
+
+[node name="SmiteSpawner" type="Node2D" parent="Chosen"]
+script = ExtResource( 3 )
+distance = 111
+start_delay = 2.0
+spawn_check_interval = 1.0
+random_factor = 0.5
+spawn_probability = 0.8
+smite_speed = 0
+
+[node name="SpawnTimer" type="Timer" parent="Chosen/SmiteSpawner"]
+one_shot = true
+
+[node name="HaloopSpawner" type="Node2D" parent="Chosen"]
+script = ExtResource( 4 )
+half_range = 50.0
+start_delay = 1.0
+spawn_check_interval = 2.0
+random_factor = 1.0
+spawn_probability = 0.5
+
+[node name="SpawnTimer" type="Timer" parent="Chosen/HaloopSpawner"]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="Chosen"]
+position = Vector2( 0, -120 )
+current = true
+
+[node name="Scenery" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65515, 1, 0, 65516, 1, 0, 65517, 1, 0, 65518, 1, 0, 65519, 1, 0, 65520, 1, 0, 65521, 1, 0, 65522, 1, 0, 65523, 1, 0, 65524, 1, 0, 65525, 1, 0, 65526, 1, 0, 65527, 1, 0, 65528, 1, 0, 65529, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 36, 1, 0, 37, 1, 0, 38, 1, 0, 39, 1, 0, 40, 1, 0, 41, 1, 0, 42, 1, 0, 43, 1, 0, 44, 1, 0, 45, 1, 0, 46, 1, 0, 1179627, 0, 0, 1179628, 0, 0, 1179629, 0, 0, 1179630, 0, 0, 1179631, 0, 0, 1179632, 0, 0, 1179633, 0, 0, 1179634, 0, 0, 1179635, 0, 0, 1179636, 0, 0, 1179637, 0, 0, 1179638, 0, 0, 1179639, 0, 0, 1179640, 0, 0, 1179641, 0, 0, 1179642, 0, 0, 1179643, 0, 0, 1179644, 0, 0, 1179645, 0, 0, 1179646, 0, 0, 1179647, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1114144, 0, 0, 1114145, 0, 0, 1114146, 0, 0, 1114147, 0, 0, 1114148, 0, 0, 1114149, 0, 0, 1114150, 0, 0, 1114151, 0, 0, 1114152, 0, 0, 1114153, 0, 0, 1114154, 0, 0, 1114155, 0, 0, 1114156, 0, 0, 1114157, 0, 0, 1114158, 0, 0 )
+
+[node name="Entities" type="Node2D" parent="."]
+[connection signal="godness_updated" from="Chosen" to="Chosen/SmiteSpawner" method="_on_Chosen_godness_updated"]
+[connection signal="timeout" from="Chosen/SmiteSpawner/SpawnTimer" to="Chosen/SmiteSpawner" method="spawn"]
