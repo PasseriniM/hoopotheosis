@@ -8,6 +8,7 @@ export(float) var spawn_check_interval
 export(float) var random_factor
 export(float) var spawn_probability
 export(int) var smite_speed = 28
+export(Curve) var spawn_prob
 
 var smite = preload("res://scenes/Smite.tscn")
 
