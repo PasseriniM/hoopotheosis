@@ -1,5 +1,7 @@
 extends Node2D
 
+signal haloop_broken(haloop)
+
 export(float, 1) var momentum = 1 setget set_momentum
 export(float) var decay_rate = 0.25 # mesured in momentum per second
 export(float) var random_factor = 0.05
@@ -39,4 +41,5 @@ func _break():
 	b.global_position = self.global_position
 	get_tree().get_root().add_child(b)
 	self.visible = false
+	emit_signal("haloop_broken", self)
 	self.queue_free()

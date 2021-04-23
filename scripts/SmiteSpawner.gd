@@ -8,9 +8,11 @@ export(float) var spawn_check_interval
 export(float) var random_factor
 export(float) var spawn_probability
 export(int) var smite_speed = 28
-export(Curve) var spawn_prob
 
-var smite = preload("res://scenes/Smite.tscn")
+var active_smites : int
+
+const MAX_SMITES = 30
+const smite = preload("res://scenes/Smite.tscn")
 
 func _ready():
 	if Engine.is_editor_hint(): return
@@ -18,8 +20,10 @@ func _ready():
 	$SpawnTimer.start(start_delay)
 
 func spawn():
-	if randf() < spawn_probability:
+	if get_spawn_possibility() and randf() < spawn_probability:
 		var s = smite.instance()
+		active_smites += 1
+		s.connect("smite_exploded", self, "_on_smite_exploded")
 		s.position = self.global_position
 		if randi() % 2 == 0:
 			s.position.x += distance
@@ -54,3 +58,11 @@ func set_distance(value):
 
 func _on_Chosen_godness_updated():
 	update()
+
+func _on_smite_exploded():
+	active_smites -= 1
+
+func get_spawn_possibility():
+	var tl = int(get_parent().scale.y / 0.5)
+	var hc = get_parent().get_node("Hula").haloops.size() * 2
+	return active_smites < min(min(tl, hc), MAX_SMITES)

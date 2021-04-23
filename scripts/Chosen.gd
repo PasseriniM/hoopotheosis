@@ -19,7 +19,8 @@ enum {
 	STRUGGLE_RIGHT,
 	EXHAUSTED,
 	SMITED,
-	ACCEPT
+	ACCEPT,
+	CATCH
 }
 
 var StateMove = {
@@ -28,7 +29,8 @@ var StateMove = {
 	STRUGGLE_RIGHT: funcref(self, "move"),
 	EXHAUSTED: funcref(self, "donot"),
 	SMITED: funcref(self, "donot"),
-	ACCEPT: funcref(self, "donot")
+	ACCEPT: funcref(self, "donot"),
+	CATCH: funcref(self, "donot")
 }
 
 var StateUpdate = {
@@ -37,7 +39,8 @@ var StateUpdate = {
 	STRUGGLE_RIGHT: funcref(self, "sr_update"),
 	EXHAUSTED: funcref(self, "donot"),
 	SMITED: funcref(self, "donot"),
-	ACCEPT: funcref(self, "accept_update")
+	ACCEPT: funcref(self, "accept_update"),
+	CATCH: funcref(self, "donot")
 }
 
 var state = IDLE
@@ -73,6 +76,7 @@ func sr_update(_delta):
 
 func accept_update(_delta):
 	if not Input.is_action_pressed("chosen_accept"):
+		$Graphics/Head/Area2D/CollisionShape2D.set_deferred("disabled", false)
 		if $Timers/Exhaust.time_left > 0:
 			enter_exhaust()
 		else:
@@ -120,7 +124,16 @@ func enter_exhaust():
 func enter_accept():
 	$Graphics/Torso.frame = 0
 	$Graphics/Head.animation = "accept"
+	$Graphics/Head/AudioHumpf.play()
+	$Graphics/Head/Area2D/CollisionShape2D.set_deferred("disabled", false)
 	state = ACCEPT
+
+func enter_catch(_area):
+	$Graphics/Head.animation = "catch"
+	state = CATCH
+	yield(get_tree().create_timer(0.5), "timeout")
+	$Hula.catch_haloop()
+	enter_idle()
 
 func move(delta):
 	var dir = 0
@@ -131,6 +144,9 @@ func move(delta):
 	
 	if dir != 0:
 		$Graphics/Legs.animation = "moving"
+		if $Graphics/Legs/AudioStepTimer.is_stopped():
+			$Graphics/Legs/AudioStepTimer.play_step()
+			$Graphics/Legs/AudioStepTimer.start()
 		
 		if dir == -1:
 			$Graphics/Head.flip_h = true
@@ -138,6 +154,7 @@ func move(delta):
 			$Graphics/Head.flip_h = false
 	else:
 		$Graphics/Legs.animation = "idle"
+		$Graphics/Legs/AudioStepTimer.stop()
 	
 	translate(Vector2(dir * move_speed * delta, 0))
 
@@ -175,3 +192,16 @@ func _exit_struggle():
 
 func _smited(_area):
 	enter_smited()
+
+func get_cover_value():
+	return $Hula.haloops.size() * 0.5
+
+func get_cover_percent():
+	return get_cover_value() / self.scale.y
+
+func get_uncover_percent():
+	return 1 - get_cover_percent()
+
+
+func _on_AudioStepTimer_timeout():
+	pass # Replace with function body.

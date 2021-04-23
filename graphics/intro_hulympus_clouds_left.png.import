@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/intro_hulympians_clouds.png-a29982a9e951916f2f80b9b2c202be4d.stex"
+path="res://.import/intro_hulympus_clouds_left.png-b7af0d3d21069fc3f7c6bbccbe4b5e26.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/intro_hulympians_clouds.png"
-dest_files=[ "res://.import/intro_hulympians_clouds.png-a29982a9e951916f2f80b9b2c202be4d.stex" ]
+source_file="res://graphics/intro_hulympus_clouds_left.png"
+dest_files=[ "res://.import/intro_hulympus_clouds_left.png-b7af0d3d21069fc3f7c6bbccbe4b5e26.stex" ]
 
 [params]
 

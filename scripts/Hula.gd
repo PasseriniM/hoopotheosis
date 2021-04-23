@@ -5,12 +5,12 @@ export var godness_factor = 0.3
 
 var haloops = []
 
+const haloop = preload("res://scenes/Haloop.tscn")
+
 func _ready():
 	for x in get_children():
 		haloops.append(x)
-	
-	for h in haloops:
-		h.hula = true
+		x.connect("haloop_broken", self, "_on_haloop_broken")
 	
 	check_constraints()
 
@@ -44,3 +44,15 @@ func struggle():
 func drop_momentum(drop):
 	for h in haloops:
 		h.momentum -= drop
+
+func catch_haloop():
+	var h = haloop.instance()
+	h.momentum = 0.5
+	haloops.append(h)
+	h.connect("haloop_broken", self, "_on_haloop_broken")
+	self.add_child(h)
+	h.position = Vector2(0, get_parent().get_node("Graphics/Head").position.y)
+	check_constraints()
+
+func _on_haloop_broken(haloop):
+	haloops.erase(haloop)

@@ -1,0 +1,530 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://graphics/god_afro_pirate.png" type="Texture" id=1]
+[ext_resource path="res://graphics/chosen_torso.png" type="Texture" id=2]
+[ext_resource path="res://graphics/intro_hulympians_clouds.png" type="Texture" id=3]
+[ext_resource path="res://scripts/SimpleRandomAnimator.gd" type="Script" id=4]
+[ext_resource path="res://graphics/god_cool_punk.png" type="Texture" id=5]
+[ext_resource path="res://graphics/god_gentleman.png" type="Texture" id=6]
+[ext_resource path="res://graphics/god_mr_m.png" type="Texture" id=7]
+[ext_resource path="res://graphics/chosen_idle.png" type="Texture" id=8]
+[ext_resource path="res://other/hoop_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://other/idid_font.tres" type="DynamicFont" id=10]
+
+[sub_resource type="Animation" id=18]
+resource_name = "roll_credits"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Credits/Line1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Credits/Line2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Credits/Line3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10.5, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Credits/Line4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 15.5, 18 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Credits/Line5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 19 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 33, 38 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 33, 0, 33, 38 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "animate"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0 ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 27, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 27, 0, 27, 32 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "animate"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0 ]
+}
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 28, 34 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 28, 0, 28, 34 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=12]
+resource_name = "animate"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2, 0 ]
+}
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 32, 48, 16 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=17]
+resource_name = "victory"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Outro" type="Node2D"]
+
+[node name="CreditsAnimator" type="AnimationPlayer" parent="."]
+autoplay = "roll_credits"
+anims/roll_credits = SubResource( 18 )
+
+[node name="Gods" type="Node2D" parent="."]
+position = Vector2( 0, 40.536 )
+
+[node name="Afro Pirate" type="Node2D" parent="Gods"]
+position = Vector2( 41.0293, 104.979 )
+scale = Vector2( 1.4, 1.4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="head" type="AnimatedSprite" parent="Gods/Afro Pirate"]
+frames = SubResource( 3 )
+playing = true
+
+[node name="torso" type="Sprite" parent="Gods/Afro Pirate"]
+position = Vector2( -2, 98 )
+scale = Vector2( 1, 10 )
+texture = ExtResource( 2 )
+vframes = 3
+
+[node name="Cool Punk" type="Node2D" parent="Gods"]
+position = Vector2( 97.252, 124.602 )
+scale = Vector2( 1.4, 1.4 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+interval = 2.0
+variance = 2.0
+
+[node name="Animator" type="AnimationPlayer" parent="Gods/Cool Punk"]
+anims/animate = SubResource( 4 )
+
+[node name="head" type="AnimatedSprite" parent="Gods/Cool Punk"]
+frames = SubResource( 7 )
+
+[node name="torso" type="Sprite" parent="Gods/Cool Punk"]
+position = Vector2( 0, 90 )
+scale = Vector2( 1, 10 )
+texture = ExtResource( 2 )
+vframes = 3
+
+[node name="Timer" type="Timer" parent="Gods/Cool Punk"]
+
+[node name="Sir Gentleman" type="Node2D" parent="Gods"]
+position = Vector2( 222.437, 123.058 )
+scale = Vector2( 1.4, 1.4 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+interval = 3.0
+variance = 0.5
+
+[node name="Animator" type="AnimationPlayer" parent="Gods/Sir Gentleman"]
+anims/animate = SubResource( 8 )
+
+[node name="head" type="AnimatedSprite" parent="Gods/Sir Gentleman"]
+frames = SubResource( 11 )
+
+[node name="torso" type="Sprite" parent="Gods/Sir Gentleman"]
+position = Vector2( 0, 90 )
+scale = Vector2( 1, 10 )
+texture = ExtResource( 2 )
+vframes = 3
+
+[node name="Timer" type="Timer" parent="Gods/Sir Gentleman"]
+
+[node name="Mr M" type="Node2D" parent="Gods"]
+position = Vector2( 291.399, 134.698 )
+scale = Vector2( 1.4, 1.4 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+interval = 2.0
+variance = 1.0
+
+[node name="Animator" type="AnimationPlayer" parent="Gods/Mr M"]
+anims/animate = SubResource( 12 )
+
+[node name="torso" type="AnimatedSprite" parent="Gods/Mr M"]
+position = Vector2( 0, 60 )
+scale = Vector2( 1, 8 )
+frames = SubResource( 16 )
+
+[node name="head" type="Sprite" parent="Gods/Mr M"]
+texture = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Gods/Mr M"]
+
+[node name="Chosen" type="Node2D" parent="Gods"]
+position = Vector2( 160, 110.026 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animator" type="AnimationPlayer" parent="Gods/Chosen"]
+autoplay = "victory"
+anims/victory = SubResource( 17 )
+
+[node name="head" type="Sprite" parent="Gods/Chosen"]
+texture = ExtResource( 8 )
+hframes = 2
+frame = 1
+
+[node name="torso" type="Sprite" parent="Gods/Chosen"]
+position = Vector2( 0, 62 )
+scale = Vector2( 1, 8 )
+texture = ExtResource( 2 )
+vframes = 3
+
+[node name="Clouds" type="Sprite" parent="."]
+position = Vector2( 160, 144 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Credits" type="Control" parent="."]
+margin_right = 320.0
+margin_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line1" type="Control" parent="Credits"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -41.25
+margin_right = 200.0
+margin_bottom = 68.75
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/Line1"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+text = "A  GAME  BY"
+align = 1
+valign = 2
+
+[node name="Label2" type="Label" parent="Credits/Line1"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
+text = "idle_ideator"
+align = 1
+
+[node name="Line2" type="Control" parent="Credits"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -41.25
+margin_right = 200.0
+margin_bottom = 68.75
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/Line2"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+text = "PROGRAMMING,  ART,
+MUSIC  AND  STORY
+BY"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Credits/Line2"]
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
+text = "idle_ideator"
+align = 1
+
+[node name="Line3" type="Control" parent="Credits"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -46.0
+margin_right = 200.0
+margin_bottom = 63.9982
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/Line3"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+text = "DEVELOPED  WITH"
+align = 1
+valign = 2
+
+[node name="Label2" type="Label" parent="Credits/Line3"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
+text = "Godot Engine
+Aseprite
+Bosca Ceoil"
+align = 1
+
+[node name="Line4" type="Control" parent="Credits"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -41.25
+margin_right = 200.0
+margin_bottom = 68.75
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/Line4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+text = "AND  OF  COURSE ..."
+align = 1
+valign = 1
+
+[node name="Line5" type="Control" parent="Credits"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -55.0
+margin_right = 160.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/Line5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+text = "THANK  YOU  FOR  PLAYING !"
+align = 1
+valign = 1
+[connection signal="timeout" from="Gods/Cool Punk/Timer" to="Gods/Cool Punk" method="_animate"]
+[connection signal="timeout" from="Gods/Sir Gentleman/Timer" to="Gods/Sir Gentleman" method="_animate"]
+[connection signal="timeout" from="Gods/Mr M/Timer" to="Gods/Mr M" method="_animate"]

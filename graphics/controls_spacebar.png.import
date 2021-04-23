@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/intro_hulympians_clouds.png-a29982a9e951916f2f80b9b2c202be4d.stex"
+path="res://.import/controls_spacebar.png-e47e507b208544a24fe27b0c489075a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/intro_hulympians_clouds.png"
-dest_files=[ "res://.import/intro_hulympians_clouds.png-a29982a9e951916f2f80b9b2c202be4d.stex" ]
+source_file="res://graphics/controls_spacebar.png"
+dest_files=[ "res://.import/controls_spacebar.png-e47e507b208544a24fe27b0c489075a4.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends TileMap
+extends Node
 
 var chosen
 

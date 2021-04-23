@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/intro_hulympus_clouds.png-f7b04ab2d98c4d38a6de5468e29c6832.stex"
+path="res://.import/god_mr_m.png-5311ad43269026dad25d4825e55a346e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/intro_hulympus_clouds.png"
-dest_files=[ "res://.import/intro_hulympus_clouds.png-f7b04ab2d98c4d38a6de5468e29c6832.stex" ]
+source_file="res://graphics/god_mr_m.png"
+dest_files=[ "res://.import/god_mr_m.png-5311ad43269026dad25d4825e55a346e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
