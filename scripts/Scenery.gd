@@ -1,11 +1,6 @@
 extends Node
 
-var chosen
+onready var chosen = get_node("../Chosen")
 
-func _ready():
-	chosen = get_parent().get_node("Chosen")
-
-func _process(delta):
-	var p = int(chosen.position.x)
-	
-	self.position.x = (p % 320) * 320
+func _process(_delta):
+	self.position.x = int(chosen.position.x / 320) * 320

@@ -1,0 +1,330 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/chosen/chosen_state_machine.gd" type="Script" id=1]
+[ext_resource path="res://scripts/chosen/states/idle.gd" type="Script" id=2]
+[ext_resource path="res://graphics/chosen_head.png" type="Texture" id=3]
+[ext_resource path="res://graphics/chosen_legs.png" type="Texture" id=4]
+[ext_resource path="res://graphics/chosen_torso.png" type="Texture" id=5]
+[ext_resource path="res://audio/sfx/step_sfx.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/chosen/chosen.gd" type="Script" id=7]
+[ext_resource path="res://scripts/chosen/states/catch.gd" type="Script" id=8]
+[ext_resource path="res://scripts/chosen/states/exhausted.gd" type="Script" id=9]
+[ext_resource path="res://scripts/chosen/states/struggle_right.gd" type="Script" id=10]
+[ext_resource path="res://scripts/chosen/states/smited.gd" type="Script" id=11]
+[ext_resource path="res://scripts/chosen/states/struggle_left.gd" type="Script" id=12]
+[ext_resource path="res://scripts/chosen/states/accept.gd" type="Script" id=13]
+[ext_resource path="res://scripts/chosen/chosen_graphics_controller.gd" type="Script" id=14]
+[ext_resource path="res://scripts/chosen/hula_controller.gd" type="Script" id=15]
+[ext_resource path="res://scenes/chosen/Haloop.tscn" type="PackedScene" id=16]
+[ext_resource path="res://audio/sfx/chosen_humpf_sfx.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/sfx/chosen_paralyzed.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/sfx/chosen_struggle.wav" type="AudioStream" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "accept"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "catch"
+length = 0.666667
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "exhausted"
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "smited"
+length = 0.125
+loop = true
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0625 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "struggle_left"
+length = 0.001
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "struggle_right"
+length = 0.001
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 1.0
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("StepAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[node name="Chosen" type="Node2D"]
+position = Vector2( 154.149, 105.005 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+move_speed = 24.0
+struggle_time = 0.5
+exhaust_time = 2.0
+smited_time = 2.5
+accept_drop = 0.2
+
+[node name="Graphics" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="Head" type="Sprite" parent="Graphics"]
+position = Vector2( 0, -8 )
+z_index = 1
+texture = ExtResource( 3 )
+offset = Vector2( 0, -8 )
+hframes = 4
+vframes = 4
+frame = 6
+
+[node name="HeadAnimator" type="AnimationPlayer" parent="Graphics/Head"]
+autoplay = "idle"
+anims/accept = SubResource( 1 )
+anims/catch = SubResource( 2 )
+anims/exhausted = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/smited = SubResource( 5 )
+anims/struggle_left = SubResource( 6 )
+anims/struggle_right = SubResource( 7 )
+
+[node name="HumpfAudio" type="AudioStreamPlayer2D" parent="Graphics/Head"]
+stream = ExtResource( 17 )
+volume_db = -10.0
+pitch_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="Graphics/Head"]
+position = Vector2( 0, -16 )
+gravity_vec = Vector2( 0, 0 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Head/Area2D"]
+shape = SubResource( 8 )
+disabled = true
+
+[node name="Torso" type="Sprite" parent="Graphics"]
+scale = Vector2( 1, 0.5 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -8 )
+vframes = 3
+
+[node name="Area2D" type="Area2D" parent="Graphics/Torso"]
+position = Vector2( 0, -8 )
+gravity_vec = Vector2( 0, 0 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Torso/Area2D"]
+shape = SubResource( 9 )
+
+[node name="Legs" type="Sprite" parent="Graphics"]
+texture = ExtResource( 4 )
+offset = Vector2( 0, 8 )
+hframes = 3
+frame = 1
+
+[node name="LegsAnimator" type="AnimationPlayer" parent="Graphics/Legs"]
+autoplay = "idle"
+anims/idle = SubResource( 10 )
+anims/move = SubResource( 11 )
+
+[node name="StepAudio" type="AudioStreamPlayer2D" parent="Graphics/Legs"]
+stream = ExtResource( 6 )
+volume_db = -5.0
+pitch_scale = 0.8
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="Struggle_Left" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="StruggleAudio" type="AudioStreamPlayer" parent="StateMachine/Struggle_Left"]
+stream = ExtResource( 19 )
+volume_db = -5.0
+
+[node name="Struggle_Right" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="StruggleAudio" type="AudioStreamPlayer" parent="StateMachine/Struggle_Right"]
+stream = ExtResource( 19 )
+volume_db = -5.0
+
+[node name="Exhausted" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="StateMachine/Exhausted"]
+
+[node name="Smited" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[node name="SmitedAudio" type="AudioStreamPlayer" parent="StateMachine/Smited"]
+stream = ExtResource( 18 )
+volume_db = -10.0
+
+[node name="Accept" type="Node" parent="StateMachine"]
+script = ExtResource( 13 )
+forced_speed = -6.0
+
+[node name="Catch" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
+[node name="Hula" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
+script = ExtResource( 15 )
+struggle_momentum = 0.1
+godness_factor = 0.005
+
+[node name="Haloop" parent="Hula" instance=ExtResource( 16 )]
+position = Vector2( 0, -4 )
+
+[connection signal="godness_updated" from="." to="Graphics" method="_on_godness_updated"]
+[connection signal="animation_finished" from="Graphics/Head/HeadAnimator" to="StateMachine" method="_on_animation_finished"]
+[connection signal="area_entered" from="Graphics/Head/Area2D" to="StateMachine" method="_on_catch"]
+[connection signal="area_entered" from="Graphics/Torso/Area2D" to="StateMachine" method="_on_smited"]
+[connection signal="timeout" from="StateMachine/Exhausted/Timer" to="StateMachine/Exhausted" method="_on_Timer_timeout"]

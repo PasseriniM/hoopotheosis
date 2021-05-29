@@ -1,0 +1,231 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/chosen/dummy_controller.gd" type="Script" id=1]
+[ext_resource path="res://graphics/chosen_head.png" type="Texture" id=2]
+[ext_resource path="res://graphics/chosen_legs.png" type="Texture" id=3]
+[ext_resource path="res://graphics/chosen_torso.png" type="Texture" id=4]
+[ext_resource path="res://audio/sfx/step_sfx.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sfx/chosen_humpf_sfx.wav" type="AudioStream" id=6]
+[ext_resource path="res://graphics/chosen_defeated.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "accept"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "catch"
+length = 0.666667
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "exhausted"
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "smited"
+length = 0.125
+loop = true
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0625 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "struggle_left"
+length = 0.001
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "struggle_right"
+length = 0.001
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("StepAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[node name="Dummy" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Normal" type="Node2D" parent="."]
+
+[node name="Head" type="Sprite" parent="Normal"]
+position = Vector2( 0, -8 )
+z_index = 1
+texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
+hframes = 4
+vframes = 4
+
+[node name="HeadAnimator" type="AnimationPlayer" parent="Normal/Head"]
+anims/accept = SubResource( 1 )
+anims/catch = SubResource( 2 )
+anims/exhausted = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/smited = SubResource( 5 )
+anims/struggle_left = SubResource( 6 )
+anims/struggle_right = SubResource( 7 )
+
+[node name="HumpfAudio" type="AudioStreamPlayer2D" parent="Normal/Head"]
+stream = ExtResource( 6 )
+volume_db = -10.0
+pitch_scale = 0.5
+
+[node name="Torso" type="Sprite" parent="Normal"]
+scale = Vector2( 1, 0.5 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -8 )
+vframes = 3
+
+[node name="Legs" type="Sprite" parent="Normal"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, 8 )
+hframes = 3
+
+[node name="LegsAnimator" type="AnimationPlayer" parent="Normal/Legs"]
+autoplay = "idle"
+anims/idle = SubResource( 8 )
+anims/move = SubResource( 9 )
+
+[node name="StepAudio" type="AudioStreamPlayer2D" parent="Normal/Legs"]
+stream = ExtResource( 5 )
+volume_db = -5.0
+pitch_scale = 0.8
+
+[node name="Defeated" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 7 )

@@ -4,8 +4,8 @@ signal start_game
 
 var game_started = false
 
-func _process(delta):
-	if Input.is_action_just_pressed("menu_control") and not game_started:
+func _unhandled_input(event):
+	if event.is_action_pressed("game_pause") and not game_started:
 		print("Start Fade")
 		game_started = true
 		$FadeTween.interpolate_property($Panel/Fade, "self_modulate",
@@ -15,7 +15,6 @@ func _process(delta):
 
 func _start_game():
 	yield(get_tree().create_timer(1), "timeout")
-	print("Game Started")
 	emit_signal("start_game")
 	visible = false
 	queue_free()

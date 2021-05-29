@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/haloop_fall.wav-ee57085bf15d109a28713e48e3b6eb61.sample"
+
+[deps]
+
+source_file="res://audio/sfx/haloop_fall.wav"
+dest_files=[ "res://.import/haloop_fall.wav-ee57085bf15d109a28713e48e3b6eb61.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
